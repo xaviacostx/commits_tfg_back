@@ -379,11 +379,10 @@ app.get('/ranking', function (req, res) { return __awaiter(void 0, void 0, void 
         switch (_a.label) {
             case 0:
                 console.log("📥 Petición recibida en GET /ranking");
-                console.log("ID de usuario recibido:", req.params.id_usuario);
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                query = "SELECT nombre, SUM(cantidad_consumida) AS total_consumido\n    FROM total_consumido\n    GROUP BY nombre\n    ORDER BY total_consumido DESC\n    LIMIT 10;";
+                query = "SELECT nombre, SUM(cantidad_consumida) AS total_consumido\n    FROM total_consumido\n    GROUP BY nombre\n    ORDER BY total_consumido DESC\n    LIMIT 5;";
                 return [4 /*yield*/, db.query(query)];
             case 2:
                 db_response = _a.sent();
@@ -393,6 +392,31 @@ app.get('/ranking', function (req, res) { return __awaiter(void 0, void 0, void 
             case 3:
                 err_10 = _a.sent();
                 console.error("❌ Error al obtener productos:", err_10);
+                res.status(500).send('Internal Server Error');
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); });
+app.get('/ranking_veces', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var query, db_response, err_11;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                console.log("📥 Petición recibida en GET /ranking");
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                query = "\n            SELECT nombre, \n                SUM(cantidad_consumida) AS total_consumido, \n                COUNT(*) AS veces_consumido\n            FROM total_consumido\n            GROUP BY nombre\n            ORDER BY total_consumido DESC, veces_consumido DESC\n            LIMIT 5;\n        ";
+                return [4 /*yield*/, db.query(query)];
+            case 2:
+                db_response = _a.sent();
+                console.log("🔹 Productos más consumidos:", db_response.rows);
+                res.json(db_response.rows);
+                return [3 /*break*/, 4];
+            case 3:
+                err_11 = _a.sent();
+                console.error("❌ Error al obtener el ranking de productos:", err_11);
                 res.status(500).send('Internal Server Error');
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];

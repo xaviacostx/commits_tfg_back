@@ -246,14 +246,13 @@ app.get('/productos/:id_usuario', async (req, res) => {
 
 app.get('/ranking', async (req, res) => {
     console.log("📥 Petición recibida en GET /ranking");
-    console.log("ID de usuario recibido:", req.params.id_usuario);
 
     try {
         let query = `SELECT nombre, SUM(cantidad_consumida) AS total_consumido
     FROM total_consumido
     GROUP BY nombre
     ORDER BY total_consumido DESC
-    LIMIT 10;`;
+    LIMIT 5;`;
 
         let db_response = await db.query(query);
         console.log("🔍 Productos encontrados:", db_response.rows);
@@ -264,7 +263,29 @@ app.get('/ranking', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+app.get('/ranking_veces', async (req, res) => {
+    console.log("📥 Petición recibida en GET /ranking");
 
+    try {
+        let query = `
+            SELECT nombre, 
+                SUM(cantidad_consumida) AS total_consumido, 
+                COUNT(*) AS veces_consumido
+            FROM total_consumido
+            GROUP BY nombre
+            ORDER BY total_consumido DESC, veces_consumido DESC
+            LIMIT 5;
+        `;
+
+        let db_response = await db.query(query);
+        console.log("🔹 Productos más consumidos:", db_response.rows);
+        
+        res.json(db_response.rows);
+    } catch (err) {
+        console.error("❌ Error al obtener el ranking de productos:", err);
+        res.status(500).send('Internal Server Error');
+    }
+});
 /*app.post('/perfil', jsonParser, async (req, res) => {
     console.log(`Petición recibida al endpoint POST /perfil. 
         Body:${JSON.stringify(req.body)}`);
