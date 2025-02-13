@@ -464,7 +464,7 @@ app.get('/suma/:valor1/:valor2', (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });*/
-var port = 'postgresql://proyecto_final_24_25_0fcc_user:yU0164YPim1bSnIlPoLoo0bLgPwmQ1Rt@dpg-cum65123esus73bflhm0-a/proyecto_final_24_25_0fcc';
+var port = process.env.PORT || 3000;
 app.listen(port, function () {
     return console.log("App listening on PORT " + port + ".\n\n    ENDPOINTS:\n    - PRUEBAAAA\n    - GET /user/:email\n    - POST /user\n    - GET /productos\n    - POST /anadir_producto\n    - POST /total_consumido\n\n    ");
 });
