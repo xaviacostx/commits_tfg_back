@@ -173,7 +173,7 @@ app.get('/total_consumido_dia/:id_usuario/:fecha', function (req, res) { return 
                 _a.trys.push([1, 3, , 4]);
                 query = "SELECT * FROM total_consumido WHERE id_usuario = '" + req.params.id_usuario + "' AND fecha = '" + req.params.fecha + "'";
                 values = [req.params.id_usuario, req.params.fecha];
-                return [4 /*yield*/, db.query(query, values)];
+                return [4 /*yield*/, db.query(query)];
             case 2:
                 db_response = _a.sent();
                 console.log("🔍 Datos de consumo del día:", db_response.rows);
@@ -200,7 +200,7 @@ app.get('/total_consumido_mes/:id_usuario/:fecha', function (req, res) { return 
                 _a.trys.push([1, 3, , 4]);
                 query = "SELECT * FROM total_consumido WHERE id_usuario = '" + req.params.id_usuario + "' AND fecha LIKE '" + req.params.fecha + "' || '%'";
                 values = [req.params.id_usuario, req.params.fecha];
-                return [4 /*yield*/, db.query(query, values)];
+                return [4 /*yield*/, db.query(query)];
             case 2:
                 db_response = _a.sent();
                 console.log("🔍 Datos de consumo del mes:", db_response.rows);
@@ -227,7 +227,7 @@ app.get('/total_consumido_ano/:id_usuario/:fecha', function (req, res) { return 
                 _a.trys.push([1, 3, , 4]);
                 query = "SELECT * FROM total_consumido WHERE id_usuario = '" + req.params.id_usuario + "' AND fecha LIKE '" + req.params.fecha + "' || '%'";
                 values = [req.params.id_usuario, req.params.fecha];
-                return [4 /*yield*/, db.query(query, values)];
+                return [4 /*yield*/, db.query(query)];
             case 2:
                 db_response = _a.sent();
                 console.log("🔍 Datos de consumo del año:", db_response.rows);
@@ -358,7 +358,7 @@ app.get('/productos/:id_usuario', function (req, res) { return __awaiter(void 0,
                 _a.trys.push([1, 3, , 4]);
                 query = "SELECT * FROM total_consumido WHERE id_usuario = '" + req.params.id_usuario + "'";
                 values = [req.params.id_usuario];
-                return [4 /*yield*/, db.query(query, values)];
+                return [4 /*yield*/, db.query(query)];
             case 2:
                 db_response = _a.sent();
                 console.log("🔍 Productos encontrados:", db_response.rows);

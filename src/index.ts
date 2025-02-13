@@ -80,7 +80,7 @@ app.get('/total_consumido_dia/:id_usuario/:fecha', async (req, res) => {
         let query = `SELECT * FROM total_consumido WHERE id_usuario = '${req.params.id_usuario}' AND fecha = '${req.params.fecha}'`;
         let values = [req.params.id_usuario, req.params.fecha];
 
-        let db_response = await db.query(query, values);
+        let db_response = await db.query(query);
         console.log("🔍 Datos de consumo del día:", db_response.rows);
         res.json(db_response.rows);
     } catch (err) {
@@ -96,7 +96,7 @@ app.get('/total_consumido_mes/:id_usuario/:fecha', async (req, res) => {
         let query = `SELECT * FROM total_consumido WHERE id_usuario = '${req.params.id_usuario}' AND fecha LIKE '${req.params.fecha}' || '%'`;
         let values = [req.params.id_usuario, req.params.fecha];
 
-        let db_response = await db.query(query, values);
+        let db_response = await db.query(query);
         console.log("🔍 Datos de consumo del mes:", db_response.rows);
         res.json(db_response.rows);
     } catch (err) {
@@ -112,7 +112,7 @@ app.get('/total_consumido_ano/:id_usuario/:fecha', async (req, res) => {
         let query = `SELECT * FROM total_consumido WHERE id_usuario = '${req.params.id_usuario}' AND fecha LIKE '${req.params.fecha}' || '%'`;
         let values = [req.params.id_usuario, req.params.fecha];
 
-        let db_response = await db.query(query, values);
+        let db_response = await db.query(query);
         console.log("🔍 Datos de consumo del año:", db_response.rows);
         res.json(db_response.rows);
     } catch (err) {
@@ -233,7 +233,7 @@ app.get('/productos/:id_usuario', async (req, res) => {
         let query = `SELECT * FROM total_consumido WHERE id_usuario = '${req.params.id_usuario}'`;
         let values = [req.params.id_usuario];
 
-        let db_response = await db.query(query, values);
+        let db_response = await db.query(query);
         console.log("🔍 Productos encontrados:", db_response.rows);
 
         res.json(db_response.rows);
