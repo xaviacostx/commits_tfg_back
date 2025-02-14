@@ -264,7 +264,7 @@ app.get('/ranking', async (req, res) => {
     }
 });
 app.get('/ranking_veces', async (req, res) => {
-    console.log("📥 Petición recibida en GET /ranking");
+    console.log("📥 Petición recibida en GET /ranking_veces");
 
     try {
         let query = `
@@ -273,7 +273,7 @@ app.get('/ranking_veces', async (req, res) => {
                 COUNT(*) AS veces_consumido
             FROM total_consumido
             GROUP BY nombre
-            ORDER BY total_consumido DESC, veces_consumido DESC
+            ORDER BY veces_consumido DESC, total_consumido DESC
             LIMIT 5;
         `;
 
@@ -341,5 +341,6 @@ app.listen(port, () =>
     - GET /productos
     - POST /anadir_producto
     - POST /total_consumido
-
+    - GET /ranking
+    - GET /ranking_veces
     `));

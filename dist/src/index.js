@@ -403,11 +403,11 @@ app.get('/ranking_veces', function (req, res) { return __awaiter(void 0, void 0,
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                console.log("📥 Petición recibida en GET /ranking");
+                console.log("📥 Petición recibida en GET /ranking_veces");
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                query = "\n            SELECT nombre, \n                SUM(cantidad_consumida) AS total_consumido, \n                COUNT(*) AS veces_consumido\n            FROM total_consumido\n            GROUP BY nombre\n            ORDER BY total_consumido DESC, veces_consumido DESC\n            LIMIT 5;\n        ";
+                query = "\n            SELECT nombre, \n                SUM(cantidad_consumida) AS total_consumido, \n                COUNT(*) AS veces_consumido\n            FROM total_consumido\n            GROUP BY nombre\n            ORDER BY veces_consumido DESC, total_consumido DESC\n            LIMIT 5;\n        ";
                 return [4 /*yield*/, db.query(query)];
             case 2:
                 db_response = _a.sent();
@@ -466,5 +466,5 @@ app.get('/suma/:valor1/:valor2', (req, res) => {
 });*/
 var port = process.env.PORT || 3000;
 app.listen(port, function () {
-    return console.log("App listening on PORT " + port + ".\n\n    ENDPOINTS:\n    - PRUEBAAAA\n    - GET /user/:email\n    - POST /user\n    - GET /productos\n    - POST /anadir_producto\n    - POST /total_consumido\n\n    ");
+    return console.log("App listening on PORT " + port + ".\n\n    ENDPOINTS:\n    - PRUEBAAAA\n    - GET /user/:email\n    - POST /user\n    - GET /productos\n    - POST /anadir_producto\n    - POST /total_consumido\n    - GET /ranking\n    - GET /ranking_veces\n    ");
 });
