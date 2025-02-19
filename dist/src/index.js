@@ -242,48 +242,6 @@ app.get('/total_consumido_ano/:id_usuario/:fecha', function (req, res) { return 
         }
     });
 }); });
-// app.get('/user/:email', async (req, res) => {
-//     console.log(`Petición recibida al endpoint GET /user/:email.`);
-//     console.log(`Parámetro recibido por URL: ${req.params.email}`);
-//     try{
-//         let query = `SELECT * FROM usuarios WHERE id='${req.params.email}'`;
-//         let db_response = await db.query(query);
-//         if(db_response.rows.length > 0){
-//             console.log(`Usuario encontrado: ${db_response.rows[0].id}`);
-//             res.json(db_response.rows[0]);   
-//         } else{
-//             console.log(`Usuario no encontrado.`)
-//             res.json(`User not found`);
-//         }
-//     } catch (err){
-//         console.error(err);
-//         res.status(500).send('Internal Server Error');
-//     }
-// });
-// app.post('/anadir_producto', jsonParser, async (req, res) => {
-//     console.log(`Petición recibida al endpoint POST /anadir_producto. 
-//         Body: ${JSON.stringify(req.body)}`);
-//     try {
-//         let query = `INSERT INTO total_consumido 
-//         VALUES ('${req.body.id}', '${req.body.nombre}');`; 
-//         let db_response = await db.query(query);
-//         console.log(db_response);
-//         if(db_response.rowCount == 1){
-//             res.json(`El registro ha sido creado correctamente.`);
-//         } else{
-//             res.json(`El registro NO ha sido creado.`);
-//         }
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).send('Internal Server Error');
-//     }
-// });
-// app.post('/total_consumido', (req, res) => {
-//     const nuevoProducto = req.body;
-//     console.log('Datos recibidos:', nuevoProducto);
-//     // Aquí puedes guardar el producto en la base de datos.
-//     res.status(201).json({ message: 'Producto añadido con éxito', producto: nuevoProducto });
-// });
 app.get('/prueba_total_consumido', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var query, db_response, err_7;
     return __generator(this, function (_a) {
@@ -423,48 +381,7 @@ app.get('/ranking_veces', function (req, res) { return __awaiter(void 0, void 0,
         }
     });
 }); });
-/*app.post('/perfil', jsonParser, async (req, res) => {
-    console.log(`Petición recibida al endpoint POST /perfil.
-        Body:${JSON.stringify(req.body)}`);
-    try {
-        
-        let query = `INSERT INTO alumnos (name, email, img)
-        VALUES ('${req.body.name}', '${req.body.email}', '${req.body.img}');`;
-        console.log(query);
-        let db_response = await db.query(query);
-        console.log(db_response);
-        
-        res.json(`El registro del señor/a ${req.body.nombre} ${req.body.apellidos}, con domicilio ${req.body.direccion},
-            y color de pelo ${req.body.color_pelo} ha sido creado.`);
-
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-app.get('/suma/:valor1/:valor2', (req, res) => {
-    let resultado: number = 0;
-    resultado = Number(req.params.valor1) + Number(req.params.valor2);
-    console.log("resultado: " + resultado);
-    res.send(String(resultado));
-});*/
-/*app.post('/futbolistas', jsonParser, async (req, res) => {
-    console.log(`Petición recibida al endpoint POST /futbolistas.
-        Body:${JSON.stringify(req.body)}`);
-    try {
-        let query = `INSERT INTO alumnos (name, email, img)
-        VALUES ('${req.body.name}', '${req.body.email}', '${req.body.img}');`;
-        console.log(query);
-        let db_response = await db.query(query);
-        console.log(db_response);
-        res.json("Registro guardado correctamente.");
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Internal Server Error');
-    }
-});*/
 var port = process.env.PORT || 3000;
 app.listen(port, function () {
-    return console.log("App listening on PORT " + port + ".\n\n    ENDPOINTS:\n    - PRUEBAAAA\n    - GET /user/:email\n    - POST /user\n    - GET /productos\n    - POST /anadir_producto\n    - POST /total_consumido\n    - GET /ranking\n    - GET /ranking_veces\n    ");
+    return console.log("App listening on PORT " + port + ".\n\n    ENDPOINTS:\n    - GET /productos\n    - GET /user/:email\n    - POST /user\n    - GET /total_consumido_dia/:id_usuario/:fecha\n    - GET /total_consumido_mes/:id_usuario/:fecha\n    - GET /total_consumido_ano/:id_usuario/:fecha\n    - GET /prueba_total_consumido\n    - POST /total_consumido\n    - GET /productos/:id_usuario\n    - GET /ranking\n    - GET /ranking_veces\n    ");
 });
