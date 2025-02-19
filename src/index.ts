@@ -69,54 +69,54 @@ app.post('/user', jsonParser, async (req, res) => {
             res.json({ message: "El registro NO ha sido creado." });
         }
     } catch (err) {
-        console.error("❌ Error en la inserción:", err);
+        console.error(" Error en la inserción:", err);
         res.status(500).send('Internal Server Error');
     }
 });
 // Obtener consumo del día por usuario
 app.get('/total_consumido_dia/:id_usuario/:fecha', async (req, res) => {
-    console.log("📥 Petición recibida en GET /total_consumido_dia/:id_usuario/:fecha");
+    console.log(" Petición recibida en GET /total_consumido_dia/:id_usuario/:fecha");
     try {
         let query = `SELECT * FROM total_consumido WHERE id_usuario = '${req.params.id_usuario}' AND fecha = '${req.params.fecha}'`;
         let values = [req.params.id_usuario, req.params.fecha];
 
         let db_response = await db.query(query);
-        console.log("🔍 Datos de consumo del día:", db_response.rows);
+        console.log(" Datos de consumo del día:", db_response.rows);
         res.json(db_response.rows);
     } catch (err) {
-        console.error("❌ Error al obtener datos de consumo diario:", err);
+        console.error(" Error al obtener datos de consumo diario:", err);
         res.status(500).send('Internal Server Error');
     }
 });
 
 // Obtener consumo del mes por usuario
 app.get('/total_consumido_mes/:id_usuario/:fecha', async (req, res) => {
-    console.log("📥 Petición recibida en GET /total_consumido_mes/:id_usuario/:fecha");
+    console.log(" Petición recibida en GET /total_consumido_mes/:id_usuario/:fecha");
     try {
         let query = `SELECT * FROM total_consumido WHERE id_usuario = '${req.params.id_usuario}' AND fecha LIKE '${req.params.fecha}' || '%'`;
         let values = [req.params.id_usuario, req.params.fecha];
 
         let db_response = await db.query(query);
-        console.log("🔍 Datos de consumo del mes:", db_response.rows);
+        console.log(" Datos de consumo del mes:", db_response.rows);
         res.json(db_response.rows);
     } catch (err) {
-        console.error("❌ Error al obtener datos de consumo mensual:", err);
+        console.error(" Error al obtener datos de consumo mensual:", err);
         res.status(500).send('Internal Server Error');
     }
 });
 
 // Obtener consumo del año por usuario
 app.get('/total_consumido_ano/:id_usuario/:fecha', async (req, res) => {
-    console.log("📥 Petición recibida en GET /total_consumido_ano/:id_usuario/:fecha");
+    console.log(" Petición recibida en GET /total_consumido_ano/:id_usuario/:fecha");
     try {
         let query = `SELECT * FROM total_consumido WHERE id_usuario = '${req.params.id_usuario}' AND fecha LIKE '${req.params.fecha}' || '%'`;
         let values = [req.params.id_usuario, req.params.fecha];
 
         let db_response = await db.query(query);
-        console.log("🔍 Datos de consumo del año:", db_response.rows);
+        console.log(" Datos de consumo del año:", db_response.rows);
         res.json(db_response.rows);
     } catch (err) {
-        console.error("❌ Error al obtener datos de consumo anual:", err);
+        console.error(" Error al obtener datos de consumo anual:", err);
         res.status(500).send('Internal Server Error');
     }
 });
@@ -170,7 +170,7 @@ app.post('/total_consumido', jsonParser, async (req, res) => {
 });
 
 app.get('/productos/:id_usuario', async (req, res) => {
-    console.log("📥 Petición recibida en GET /productos/:id_usuario");
+    console.log(" Petición recibida en GET /productos/:id_usuario");
     console.log("ID de usuario recibido:", req.params.id_usuario);
 
     try {
@@ -178,18 +178,18 @@ app.get('/productos/:id_usuario', async (req, res) => {
         let values = [req.params.id_usuario];
 
         let db_response = await db.query(query);
-        console.log("🔍 Productos encontrados:", db_response.rows);
+        console.log(" Productos encontrados:", db_response.rows);
 
         res.json(db_response.rows);
     } catch (err) {
-        console.error("❌ Error al obtener productos:", err);
+        console.error(" Error al obtener productos:", err);
         res.status(500).send('Internal Server Error');
     }
 });
 
 
 app.get('/ranking', async (req, res) => {
-    console.log("📥 Petición recibida en GET /ranking");
+    console.log(" Petición recibida en GET /ranking");
 
     try {
         let query = `SELECT nombre, SUM(cantidad_consumida) AS total_consumido
@@ -199,16 +199,16 @@ app.get('/ranking', async (req, res) => {
     LIMIT 5;`;
 
         let db_response = await db.query(query);
-        console.log("🔍 Productos encontrados:", db_response.rows);
+        console.log(" Productos encontrados:", db_response.rows);
 
         res.json(db_response.rows);
     } catch (err) {
-        console.error("❌ Error al obtener productos:", err);
+        console.error(" Error al obtener productos:", err);
         res.status(500).send('Internal Server Error');
     }
 });
 app.get('/ranking_veces', async (req, res) => {
-    console.log("📥 Petición recibida en GET /ranking_veces");
+    console.log(" Petición recibida en GET /ranking_veces");
 
     try {
         let query = `
@@ -222,11 +222,11 @@ app.get('/ranking_veces', async (req, res) => {
         `;
 
         let db_response = await db.query(query);
-        console.log("🔹 Productos más consumidos:", db_response.rows);
+        console.log(" Productos más consumidos:", db_response.rows);
         
         res.json(db_response.rows);
     } catch (err) {
-        console.error("❌ Error al obtener el ranking de productos:", err);
+        console.error(" Error al obtener el ranking de productos:", err);
         res.status(500).send('Internal Server Error');
     }
 });

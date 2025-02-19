@@ -154,7 +154,7 @@ app.post('/user', jsonParser, function (req, res) { return __awaiter(void 0, voi
                 return [3 /*break*/, 4];
             case 3:
                 err_3 = _a.sent();
-                console.error("❌ Error en la inserción:", err_3);
+                console.error(" Error en la inserción:", err_3);
                 res.status(500).send('Internal Server Error');
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
@@ -167,7 +167,7 @@ app.get('/total_consumido_dia/:id_usuario/:fecha', function (req, res) { return 
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                console.log("📥 Petición recibida en GET /total_consumido_dia/:id_usuario/:fecha");
+                console.log(" Petición recibida en GET /total_consumido_dia/:id_usuario/:fecha");
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
@@ -176,12 +176,12 @@ app.get('/total_consumido_dia/:id_usuario/:fecha', function (req, res) { return 
                 return [4 /*yield*/, db.query(query)];
             case 2:
                 db_response = _a.sent();
-                console.log("🔍 Datos de consumo del día:", db_response.rows);
+                console.log(" Datos de consumo del día:", db_response.rows);
                 res.json(db_response.rows);
                 return [3 /*break*/, 4];
             case 3:
                 err_4 = _a.sent();
-                console.error("❌ Error al obtener datos de consumo diario:", err_4);
+                console.error(" Error al obtener datos de consumo diario:", err_4);
                 res.status(500).send('Internal Server Error');
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
@@ -194,7 +194,7 @@ app.get('/total_consumido_mes/:id_usuario/:fecha', function (req, res) { return 
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                console.log("📥 Petición recibida en GET /total_consumido_mes/:id_usuario/:fecha");
+                console.log(" Petición recibida en GET /total_consumido_mes/:id_usuario/:fecha");
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
@@ -203,12 +203,12 @@ app.get('/total_consumido_mes/:id_usuario/:fecha', function (req, res) { return 
                 return [4 /*yield*/, db.query(query)];
             case 2:
                 db_response = _a.sent();
-                console.log("🔍 Datos de consumo del mes:", db_response.rows);
+                console.log(" Datos de consumo del mes:", db_response.rows);
                 res.json(db_response.rows);
                 return [3 /*break*/, 4];
             case 3:
                 err_5 = _a.sent();
-                console.error("❌ Error al obtener datos de consumo mensual:", err_5);
+                console.error(" Error al obtener datos de consumo mensual:", err_5);
                 res.status(500).send('Internal Server Error');
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
@@ -221,7 +221,7 @@ app.get('/total_consumido_ano/:id_usuario/:fecha', function (req, res) { return 
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                console.log("📥 Petición recibida en GET /total_consumido_ano/:id_usuario/:fecha");
+                console.log(" Petición recibida en GET /total_consumido_ano/:id_usuario/:fecha");
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
@@ -230,12 +230,12 @@ app.get('/total_consumido_ano/:id_usuario/:fecha', function (req, res) { return 
                 return [4 /*yield*/, db.query(query)];
             case 2:
                 db_response = _a.sent();
-                console.log("🔍 Datos de consumo del año:", db_response.rows);
+                console.log(" Datos de consumo del año:", db_response.rows);
                 res.json(db_response.rows);
                 return [3 /*break*/, 4];
             case 3:
                 err_6 = _a.sent();
-                console.error("❌ Error al obtener datos de consumo anual:", err_6);
+                console.error(" Error al obtener datos de consumo anual:", err_6);
                 res.status(500).send('Internal Server Error');
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
@@ -309,7 +309,7 @@ app.get('/productos/:id_usuario', function (req, res) { return __awaiter(void 0,
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                console.log("📥 Petición recibida en GET /productos/:id_usuario");
+                console.log(" Petición recibida en GET /productos/:id_usuario");
                 console.log("ID de usuario recibido:", req.params.id_usuario);
                 _a.label = 1;
             case 1:
@@ -319,12 +319,12 @@ app.get('/productos/:id_usuario', function (req, res) { return __awaiter(void 0,
                 return [4 /*yield*/, db.query(query)];
             case 2:
                 db_response = _a.sent();
-                console.log("🔍 Productos encontrados:", db_response.rows);
+                console.log(" Productos encontrados:", db_response.rows);
                 res.json(db_response.rows);
                 return [3 /*break*/, 4];
             case 3:
                 err_9 = _a.sent();
-                console.error("❌ Error al obtener productos:", err_9);
+                console.error(" Error al obtener productos:", err_9);
                 res.status(500).send('Internal Server Error');
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
@@ -336,7 +336,7 @@ app.get('/ranking', function (req, res) { return __awaiter(void 0, void 0, void 
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                console.log("📥 Petición recibida en GET /ranking");
+                console.log(" Petición recibida en GET /ranking");
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
@@ -344,12 +344,12 @@ app.get('/ranking', function (req, res) { return __awaiter(void 0, void 0, void 
                 return [4 /*yield*/, db.query(query)];
             case 2:
                 db_response = _a.sent();
-                console.log("🔍 Productos encontrados:", db_response.rows);
+                console.log(" Productos encontrados:", db_response.rows);
                 res.json(db_response.rows);
                 return [3 /*break*/, 4];
             case 3:
                 err_10 = _a.sent();
-                console.error("❌ Error al obtener productos:", err_10);
+                console.error(" Error al obtener productos:", err_10);
                 res.status(500).send('Internal Server Error');
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
@@ -361,7 +361,7 @@ app.get('/ranking_veces', function (req, res) { return __awaiter(void 0, void 0,
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                console.log("📥 Petición recibida en GET /ranking_veces");
+                console.log(" Petición recibida en GET /ranking_veces");
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
@@ -369,12 +369,12 @@ app.get('/ranking_veces', function (req, res) { return __awaiter(void 0, void 0,
                 return [4 /*yield*/, db.query(query)];
             case 2:
                 db_response = _a.sent();
-                console.log("🔹 Productos más consumidos:", db_response.rows);
+                console.log(" Productos más consumidos:", db_response.rows);
                 res.json(db_response.rows);
                 return [3 /*break*/, 4];
             case 3:
                 err_11 = _a.sent();
-                console.error("❌ Error al obtener el ranking de productos:", err_11);
+                console.error(" Error al obtener el ranking de productos:", err_11);
                 res.status(500).send('Internal Server Error');
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
